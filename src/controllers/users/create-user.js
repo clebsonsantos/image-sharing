@@ -12,6 +12,9 @@ export class CreateUser {
       password: request.body.password
     }
     try{
+      if(form.name == "" || form.email == "" || form.password == ""){
+        response.status(400).end()
+      }
       const newUser = new user(form)
       await newUser.save()
       response.status(200).json({email: request.body.email})

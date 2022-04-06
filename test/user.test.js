@@ -23,5 +23,22 @@ describe("User Registration", ()=> {
         fail(err)
       })
   })
+  test("Should prevent empty data entry", async ()=>{
+
+    const user = {
+      name: "",
+      email: "",
+      password: ""
+    }
+
+    return request.post("/users")
+      .send(user)
+      .then(res => {
+        expect(res.statusCode).toEqual(400)
+      })
+      .catch(err => {
+        fail(err)
+      })
+  })
 
 })

@@ -1,6 +1,8 @@
+import { Connection } from "./connections/mongoose.js"
 import express from 'express'
 const app = express()
 
+Connection()
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
